@@ -12,7 +12,7 @@
       },
       "services": [
         {
-          "id": "next.js-app",
+          "id": "nextjs-app",
           "name": "Next.js App",
           "buildType": "nixpacks",
           "cpu": 0.5,

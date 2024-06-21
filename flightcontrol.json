@@ -30,7 +30,6 @@
             "memoryThreshold": 70,
             "cooldownTimerSecs": 300
           },
-          "includeEnvVariablesInBuild": true,
           "type": "worker"
         }
       ]

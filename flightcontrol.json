@@ -28,14 +28,10 @@
           "autoscaling": {
             "cpuThreshold": 70,
             "memoryThreshold": 70,
-            "cooldownTimerSecs": 300,
-            "requestsPerTarget": 500
+            "cooldownTimerSecs": 300
           },
           "includeEnvVariablesInBuild": true,
-          "type": "fargate",
-          "healthCheckPath": "/",
-          "enableCloudfrontSwr": false,
-          "port": 3000
+          "type": "worker"
         }
       ]
     },

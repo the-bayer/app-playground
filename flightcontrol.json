@@ -17,7 +17,6 @@
           "buildType": "nixpacks",
           "cpu": 0.5,
           "memory": 1,
-          "containerInsights": false,
           "minInstances": 1,
           "maxInstances": 1,
           "versionHistoryCount": 10,

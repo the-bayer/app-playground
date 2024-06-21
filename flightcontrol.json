@@ -2,9 +2,9 @@
   "$schema": "https://app.flightcontrol.dev/schema.json",
   "environments": [
     {
-      "id": "production",
+      "id": "production-1",
       "name": "Production",
-      "region": "eu-north-1",
+      "region": "eu-west-1",
       "source": {
         "branch": "main",
         "pr": false,
@@ -17,6 +17,7 @@
           "buildType": "nixpacks",
           "cpu": 0.5,
           "memory": 1,
+          "containerInsights": false,
           "minInstances": 1,
           "maxInstances": 1,
           "versionHistoryCount": 10,
@@ -29,14 +30,15 @@
             "memoryThreshold": 70,
             "cooldownTimerSecs": 300
           },
+          "includeEnvVariablesInBuild": true,
           "type": "worker"
         }
       ]
     },
     {
-      "id": "preview",
+      "id": "preview-1",
       "name": "Preview",
-      "region": "eu-north-1",
+      "region": "eu-west-1",
       "source": {
         "pr": true,
         "trigger": "push",

@@ -32,7 +32,23 @@
           },
           "includeEnvVariablesInBuild": true,
           "type": "worker"
-        }
+        },
+        {
+          "id": "build-system",
+          "name": "Build System Script",
+          "type": "fargate-scheduler",
+          "buildType": "nixpacks",
+          "cpu": 0.5,
+          "memory": 1,
+          "jobs": {
+            "upload-script": {
+              "cpu": 0.5,
+              "memory": 1,
+              "schedule": "manual",
+              "startCommand": "echo 'test'"
+            }
+          }
+        },
       ]
     },
     {

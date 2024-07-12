@@ -41,12 +41,6 @@
           "cpu": 0.5,
           "memory": 1,
           "jobs": {
-            "upload-script": {
-              "cpu": 0.5,
-              "memory": 1,
-              "schedule": "manual",
-              "startCommand": "echo 'test'"
-            }
           }
         },
       ]

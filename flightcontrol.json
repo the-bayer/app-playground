@@ -58,8 +58,8 @@
           "basePath": ".",
           "buildType": "docker",
           "dependsOn": [
-            "jobanni-db-staging",
-            "jobanni-redis-staging"
+            "jobanni-db-staging-khCDTZ",
+            "jobanni-redis-staging-9oA2z6"
           ],
           "autoscaling": {
             "cpuThreshold": 70,

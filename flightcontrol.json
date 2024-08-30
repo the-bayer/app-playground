@@ -60,7 +60,6 @@
           },
           "includeEnvVariablesInBuild": true,
           "type": "web",
-          "enableCloudfrontSwr": true
         },
         {
                     "ci": {

@@ -1,96 +1,78 @@
 {
   "$schema": "https://app.flightcontrol.dev/schema.json",
-  "envVariables": {},
   "environments": [
     {
-      "id": "staging",
-      "name": "staging",
-      "region": "us-east-1",
-      "source": { "pr": false, "branch": "main", "trigger": "push" },
+      "id": "production-1",
+      "name": "Production",
+      "region": "eu-west-1",
+      "source": {
+        "branch": "main",
+        "pr": false,
+        "trigger": "push"
+      },
       "services": [
         {
-          "id": "jobanni-db-staging",
-          "name": "jobanni-db-staging",
-          "port": 5432,
-          "type": "rds",
-          "engine": "postgres",
-          "private": false,
-          "storage": 20,
-          "maxStorage": 100,
-          "instanceSize": "db.m6g.large",
-          "engineVersion": "16",
-          "deletionProtection": false,
-          "applyChangesImmediately": true,
-          "autoUpgradeMinorVersions": true,
-          "connectionStringEnvVarName": "DATABASE_URL"
-        },
-        {
-          "id": "jobanni-redis-staging",
-          "name": "jobanni-redis-staging",
-          "port": 6379,
-          "type": "elasticache",
-          "engine": "redis",
-          "clusterMode": false,
-          "instanceSize": "cache.m5.large",
-          "engineVersion": "7.1",
-          "evictionPolicy": "volatile-lru",
-          "encryptionAtRest": true,
-          "numberOfReplicas": 1,
-          "applyChangesImmediately": false,
-          "autoMinorVersionUpgrade": true,
-          "connectionStringEnvVarName": "REDIS_URL"
-        },
-        {
-          "ci": {
-            "type": "ec2",
-            "storageIops": 3000,
-            "storageType": "gp3",
-            "instanceStorage": 30,
-            "storageThroughput": 125
-          },
-          "id": "fetcher-staging",
-          "cpu": 1,
-          "gpu": 0,
-          "name": "fetcher-staging",
-          "type": "worker",
-          "memory": 2,
-          "target": { "type": "fargate" },
+          "id": "nextjs-app",
+          "name": "Next.js App",
+          "buildType": "nixpacks",
+          "cpu": 0.5,
+          "memory": 1,
+          "containerInsights": false,
+          "minInstances": 1,
+          "maxInstances": 1,
+          "versionHistoryCount": 10,
           "basePath": ".",
-          "buildType": "docker",
-          "dependsOn": [
-            "jobanni-db-staging-khCDTZ",
-            "jobanni-redis-staging-9oA2z6"
-          ],
+          "dockerfilePath": "Dockerfile",
+          "dockerContext": ".",
+          "envVariables": {},
           "autoscaling": {
             "cpuThreshold": 70,
             "memoryThreshold": 70,
             "cooldownTimerSecs": 300
           },
-          "envVariables": {},
-          "maxInstances": 1,
-          "minInstances": 1,
-          "dockerContext": ".",
-          "dockerfilePath": "Dockerfile",
-          "containerInsights": false,
-          "versionHistoryCount": 10,
           "includeEnvVariablesInBuild": true,
-          "injectEnvVariablesInDockerfile": true
-        }
-      ],
-      "envVariables": {
-        "REDIS_URL": {
-          "fromService": {
-            "id": "jobanni-redis-staging",
-            "value": "connectionString"
+          "type": "worker"
+        },
+        {
+          "id": "build-system",
+          "name": "Build System Script",
+          "type": "fargate-scheduler",
+          "buildType": "nixpacks",
+          "cpu": 0.5,
+          "memory": 1,
+          "jobs": {
+            "upload-script": {
+              "cpu": 0.5,
+              "memory": 1,
+              "schedule": "manual",
+              "startCommand": "echo 'test'"
+            }
           }
         },
-        "DATABASE_URL": {
-          "fromService": {
-            "id": "jobanni-db-staging",
-            "value": "dbConnectionString"
-          }
+      ]
+    },
+    {
+      "id": "preview-1",
+      "name": "Preview",
+      "region": "eu-west-1",
+      "source": {
+        "pr": true,
+        "trigger": "push",
+        "filter": {
+          "labels": ["deploy-preview"]
         }
-      }
+      },
+      "services": [
+        {
+          "id": "redis",
+          "name": "Redis",
+          "type": "elasticache",
+          "engine": "redis",
+          "engineVersion": "7.0",
+          "instanceSize": "cache.t4g.small",
+          "connectionStringEnvVarName": "REDIS_URL"
+        }
+      ]
     }
   ]
 }

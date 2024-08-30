@@ -29,7 +29,7 @@ function LoadingDots() {
 
 async function UserSpecificDetails({ productId }: { productId: string }) {
   const data = await fetch(
-    `https://app-router-api.vercel.app/api/products?id=${productId}&delay=500&filter=price,usedPrice,leadTime,stock`,
+    `https://app-playground-api.vercel.app/api/products?id=${productId}&delay=500&filter=price,usedPrice,leadTime,stock`,
     {
       // We intentionally disable Next.js Cache to better demo
       // streaming
@@ -75,7 +75,6 @@ export function Pricing({
       </div>
 
       <Suspense fallback={<LoadingDots />}>
-        {/* @ts-expect-error Async Server Component */}
         <UserSpecificDetails productId={product.id} />
       </Suspense>
 

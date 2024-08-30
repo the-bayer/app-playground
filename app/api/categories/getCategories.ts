@@ -2,14 +2,14 @@ import { notFound } from 'next/navigation';
 import type { Category } from './category';
 
 // `server-only` guarantees any modules that import code in file
-// will never run on the client. Even though this particular api
+// will never run on the client. Even though this particular API
 // doesn't currently use sensitive environment variables, it's
-// good practise to add `server-only` preemptively.
+// good practice to add `server-only` preemptively.
 import 'server-only';
 
 export async function getCategories({ parent }: { parent?: string } = {}) {
   const res = await fetch(
-    `https://app-router-api.vercel.app/api/categories${
+    `https://app-playground-api.vercel.app/api/categories${
       parent ? `?parent=${parent}` : ''
     }`,
   );
@@ -31,7 +31,7 @@ export async function getCategories({ parent }: { parent?: string } = {}) {
 
 export async function getCategory({ slug }: { slug: string }) {
   const res = await fetch(
-    `https://app-router-api.vercel.app/api/categories${
+    `https://app-playground-api.vercel.app/api/categories${
       slug ? `?slug=${slug}` : ''
     }`,
   );

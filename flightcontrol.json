@@ -2,6 +2,37 @@
   "$schema": "https://app.flightcontrol.dev/schema.json",
   "environments": [
     {
+      "id": "production-unactivated-region",
+      "name": "Production",
+      "region": "eu-south-1",
+      "source": {
+        "branch": "main",
+        "pr": false,
+        "trigger": "push"
+      },
+      "services": [
+        {
+          "ci": {
+            "type": "codebuild",
+          },
+          "id": "build-system",
+          "name": "Build System Script - Test name change",
+          "type": "fargate-scheduler",
+          "buildType": "nixpacks",
+          "cpu": 0.5,
+          "memory": 1,
+          "jobs": {
+            "upload-script": {
+              "cpu": 0.5,
+              "memory": 1,
+              "schedule": "manual",
+              "startCommand": "echo 'test'"
+            }
+          }
+        },
+      ]
+    },
+    {
       "id": "production-1",
       "name": "Production",
       "region": "eu-west-1",
@@ -12,11 +43,11 @@
       },
       "services": [
         {
-                    "ci": {
+          "ci": {
             "type": "codebuild",
           },
           "id": "build-system",
-          "name": "Build System Script - Test name change",
+          "name": "Build System Script",
           "type": "fargate-scheduler",
           "buildType": "nixpacks",
           "cpu": 0.5,

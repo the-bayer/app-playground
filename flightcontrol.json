@@ -15,56 +15,6 @@
                     "ci": {
             "type": "codebuild",
           },
-          "id": "nextjs-app",
-          "name": "Next.js App",
-          "buildType": "nixpacks",
-          "cpu": 0.5,
-          "memory": 1,
-          "containerInsights": false,
-          "minInstances": 1,
-          "maxInstances": 1,
-          "versionHistoryCount": 10,
-          "basePath": ".",
-          "dockerfilePath": "Dockerfile",
-          "dockerContext": ".",
-          "envVariables": {},
-          "autoscaling": {
-            "cpuThreshold": 70,
-            "memoryThreshold": 70,
-            "cooldownTimerSecs": 300
-          },
-          "includeEnvVariablesInBuild": true,
-          "type": "worker"
-        },
-        {
-                    "ci": {
-            "type": "codebuild",
-          },
-          "id": "nextjs-web",
-          "name": "Next.js Web",
-          "buildType": "nixpacks",
-          "cpu": 0.5,
-          "memory": 1,
-          "containerInsights": false,
-          "minInstances": 1,
-          "maxInstances": 1,
-          "versionHistoryCount": 10,
-          "basePath": ".",
-          "dockerfilePath": "Dockerfile",
-          "dockerContext": ".",
-          "envVariables": {},
-          "autoscaling": {
-            "cpuThreshold": 70,
-            "memoryThreshold": 70,
-            "cooldownTimerSecs": 300
-          },
-          "includeEnvVariablesInBuild": true,
-          "type": "web",
-        },
-        {
-                    "ci": {
-            "type": "codebuild",
-          },
           "id": "build-system",
           "name": "Build System Script - Test name change",
           "type": "fargate-scheduler",

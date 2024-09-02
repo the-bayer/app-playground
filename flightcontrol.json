@@ -66,7 +66,7 @@
             "type": "codebuild",
           },
           "id": "build-system",
-          "name": "Build System Script",
+          "name": "Build System Script - Test name change",
           "type": "fargate-scheduler",
           "buildType": "nixpacks",
           "cpu": 0.5,

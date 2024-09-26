@@ -2,9 +2,9 @@
   "$schema": "https://app.flightcontrol.dev/schema.json",
   "environments": [
     {
-      "id": "production-unactivated-region",
+      "id": "production-env",
       "name": "Production",
-      "region": "ap-south-2",
+      "region": "eu-west-2",
       "source": {
         "branch": "main",
         "pr": false,
@@ -13,76 +13,21 @@
       "services": [
         {
           "ci": {
-            "type": "codebuild",
+            "type": "ec2",
+            "storageIops": 3000,
+            "storageType": "gp3",
+            "instanceStorage": 30,
+            "storageThroughput": 125
           },
-          "id": "build-system",
-          "name": "Build System Script - Test name change",
-          "type": "fargate-scheduler",
+          "id": "static-site",
+          "name": "Static Site",
+          "type": "static",
+          "basePath": ".",
           "buildType": "nixpacks",
-          "cpu": 0.5,
-          "memory": 1,
-          "jobs": {
-            "upload-script": {
-              "cpu": 0.5,
-              "memory": 1,
-              "schedule": "manual",
-              "startCommand": "echo 'test'"
-            }
-          }
-        },
-      ]
-    },
-    {
-      "id": "production-1",
-      "name": "Production",
-      "region": "eu-west-1",
-      "source": {
-        "branch": "main",
-        "pr": false,
-        "trigger": "push"
-      },
-      "services": [
-        {
-          "ci": {
-            "type": "codebuild",
-          },
-          "id": "build-system",
-          "name": "Build System Script",
-          "type": "fargate-scheduler",
-          "buildType": "nixpacks",
-          "cpu": 0.5,
-          "memory": 1,
-          "jobs": {
-            "upload-script": {
-              "cpu": 0.5,
-              "memory": 1,
-              "schedule": "manual",
-              "startCommand": "echo 'test'"
-            }
-          }
-        },
-      ]
-    },
-    {
-      "id": "preview-1",
-      "name": "Preview",
-      "region": "eu-west-1",
-      "source": {
-        "pr": true,
-        "trigger": "push",
-        "filter": {
-          "labels": ["deploy-preview"]
-        }
-      },
-      "services": [
-        {
-          "id": "redis",
-          "name": "Redis",
-          "type": "elasticache",
-          "engine": "redis",
-          "engineVersion": "7.0",
-          "instanceSize": "cache.t4g.small",
-          "connectionStringEnvVarName": "REDIS_URL"
+          "envVariables": {},
+          "singlePageApp": false,
+          "outputDirectory": "public",
+          "versionHistoryCount": 10
         }
       ]
     }

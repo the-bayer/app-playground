@@ -19,22 +19,6 @@
             "instanceStorage": 30,
             "storageThroughput": 125
           },
-          "id": "lambda",
-          "name": "Lambda",
-          "type": "lambda",
-          "basePath": ".",
-          "envVariables": {},
-          "includeEnvVariablesInBuild": true,
-          "injectEnvVariablesInDockerfile": true
-        },
-        {
-          "ci": {
-            "type": "ec2",
-            "storageIops": 3000,
-            "storageType": "gp3",
-            "instanceStorage": 30,
-            "storageThroughput": 125
-          },
           "id": "static-site",
           "name": "Static Site",
           "type": "static",

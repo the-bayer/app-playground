@@ -1,7 +1,7 @@
 {
   "$schema": "https://app.flightcontrol.dev/schema.json",
   "environments": [
-    {
+    {https://github.com/the-bayer/app-playground/blob/main/flightcontrol.json
       "id": "production-env",
       "name": "Production",
       "region": "eu-west-2",
@@ -11,6 +11,22 @@
         "trigger": "push"
       },
       "services": [
+        {
+          "ci": {
+            "type": "ec2",
+            "storageIops": 3000,
+            "storageType": "gp3",
+            "instanceStorage": 30,
+            "storageThroughput": 125
+          },
+          "id": "lambda",
+          "name": "Lambda",
+          "type": "lambda",
+          "basePath": ".",
+          "envVariables": {},
+          "includeEnvVariablesInBuild": true,
+          "injectEnvVariablesInDockerfile": true
+        },
         {
           "ci": {
             "type": "ec2",

@@ -19,44 +19,12 @@
             "instanceStorage": 30,
             "storageThroughput": 125
           },
-          "id": "static-site",
-          "name": "Static Site",
-          "type": "static",
+          "id": "worker",
+          "name": "Worker",
+          "type": "worker",
           "basePath": ".",
           "buildType": "nixpacks",
           "envVariables": {},
-          "singlePageApp": false,
-          "outputDirectory": "public",
-          "versionHistoryCount": 10
-        }
-      ]
-    },
-    {
-      "id": "static-only-env",
-      "name": "Static Only",
-      "region": "eu-west-2",
-      "source": {
-        "branch": "static-only",
-        "pr": false,
-        "trigger": "push"
-      },
-      "services": [
-        {
-          "ci": {
-            "type": "ec2",
-            "storageIops": 3000,
-            "storageType": "gp3",
-            "instanceStorage": 30,
-            "storageThroughput": 125
-          },
-          "id": "static-site-2",
-          "name": "Static Site",
-          "type": "static",
-          "basePath": ".",
-          "buildType": "nixpacks",
-          "envVariables": {},
-          "singlePageApp": false,
-          "outputDirectory": "public",
           "versionHistoryCount": 10
         }
       ]

@@ -25,7 +25,9 @@
           "basePath": ".",
           "buildType": "nixpacks",
           "envVariables": {},
-          "versionHistoryCount": 10
+          "versionHistoryCount": 10,
+          "cpu": 2,
+          "memory": 4
         }
       ]
     }

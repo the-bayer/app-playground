@@ -13,7 +13,7 @@
       "services": [
         {
           "lambda": {
-            "packageType": "LambdaPackageType.Image",
+            "packageType": "image",
             "memory": 128,
             "ephemeralStorage": 512,
             "fnUrl": {

@@ -40,6 +40,30 @@
           "dockerContext": "."
         },
         {
+          "lambda": {
+            "packageType": "image",
+            "memory": 128,
+            "ephemeralStorage": 512,
+            "fnUrl": {
+              "enabled": false
+            },
+            "timeoutSecs": 3
+          },
+          "ci": {
+            "type": "codebuild",
+          },
+          "id": "lambda-codebuild",
+          "name": "Lambda Codebuild",
+          "type": "lambda-function",
+          "basePath": ".",
+          "envVariables": {},
+          "includeEnvVariablesInBuild": true,
+          "injectEnvVariablesInDockerfile": true,
+          "buildType": "docker",
+          "dockerfilePath": "Dockerfile",
+          "dockerContext": "."
+        },
+        {
           "ci": {
             "type": "ec2",
             "storageIops": 3000,

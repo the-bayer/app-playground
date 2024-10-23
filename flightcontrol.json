@@ -4,65 +4,13 @@
     {
       "id": "production-env",
       "name": "Production",
-      "region": "eu-west-2",
+      "region": "us-east-1",
       "source": {
         "branch": "main",
         "pr": false,
         "trigger": "push"
       },
       "services": [
-        {
-          "lambda": {
-            "packageType": "image",
-            "memory": 128,
-            "ephemeralStorage": 512,
-            "fnUrl": {
-              "enabled": false
-            },
-            "timeoutSecs": 3
-          },
-          "ci": {
-            "type": "ec2",
-            "storageIops": 3000,
-            "storageType": "gp3",
-            "instanceStorage": 30,
-            "storageThroughput": 125
-          },
-          "id": "lambda",
-          "name": "Lambda",
-          "type": "lambda-function",
-          "basePath": ".",
-          "envVariables": {},
-          "includeEnvVariablesInBuild": true,
-          "injectEnvVariablesInDockerfile": true,
-          "buildType": "docker",
-          "dockerfilePath": "Dockerfile",
-          "dockerContext": "."
-        },
-        {
-          "lambda": {
-            "packageType": "image",
-            "memory": 128,
-            "ephemeralStorage": 512,
-            "fnUrl": {
-              "enabled": false
-            },
-            "timeoutSecs": 3
-          },
-          "ci": {
-            "type": "codebuild",
-          },
-          "id": "lambda-codebuild",
-          "name": "Lambda Codebuild",
-          "type": "lambda-function",
-          "basePath": ".",
-          "envVariables": {},
-          "includeEnvVariablesInBuild": true,
-          "injectEnvVariablesInDockerfile": true,
-          "buildType": "docker",
-          "dockerfilePath": "Dockerfile",
-          "dockerContext": "."
-        },
         {
           "ci": {
             "type": "ec2",

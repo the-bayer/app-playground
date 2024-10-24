@@ -30,22 +30,6 @@
           "versionHistoryCount": 10,
           "cpu": 2,
           "memory": 4
-        },
-        {
-          "ci": {
-            "type": "ec2",
-            "storageIops": 3000,
-            "storageType": "gp3",
-            "instanceStorage": 30,
-            "storageThroughput": 125
-          },
-          "id": "static",
-          "name": "Static",
-          "type": "static",
-          "basePath": ".",
-          "buildType": "nixpacks",
-          "envVariables": {},
-          "versionHistoryCount": 10
         }
       ]
     }

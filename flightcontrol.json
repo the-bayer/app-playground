@@ -33,7 +33,7 @@
         },
         {
           "ci": {
-            "type": "codebuild",
+            "type": "codebuild"
           },
           "id": "worker-codebuild",
           "name": "Worker - Codebuild + Nixpacks",

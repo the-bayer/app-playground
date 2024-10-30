@@ -41,6 +41,8 @@
           "basePath": ".",
           "buildType": "nixpacks",
           "installCommand": "pnpm install --no-frozen-lockfile",
+          "buildCommand": "next build",
+          "startCommand": "next start",
           "envVariables": {},
           "versionHistoryCount": 10,
           "cpu": 1,

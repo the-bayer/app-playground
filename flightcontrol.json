@@ -10,6 +10,9 @@
         "pr": false,
         "trigger": "push"
       },
+      "envVariables": {
+        "NIXPACKS_NODE_VERSION": "20"
+      },
       "services": [
         {
           "ci": {

@@ -40,6 +40,7 @@
           "type": "worker",
           "basePath": ".",
           "buildType": "nixpacks",
+          "installCommand": "pnpm install --no-frozen-lockfile",
           "envVariables": {},
           "versionHistoryCount": 10,
           "cpu": 1,

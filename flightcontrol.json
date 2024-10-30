@@ -28,8 +28,25 @@
           "dockerContext": ".",
           "envVariables": {},
           "versionHistoryCount": 10,
-          "cpu": 2,
-          "memory": 4
+          "cpu": 1,
+          "memory": 2
+        },
+        {
+          "ci": {
+            "type": "codebuild",
+          },
+          "id": "worker-codebuild",
+          "name": "Worker - Codebuild + Nixpacks",
+          "type": "worker",
+          "basePath": ".",
+          "buildType": "nixpacks",
+          "installCommand": "pnpm install --no-frozen-lockfile",
+          "buildCommand": "next build",
+          "startCommand": "next start",
+          "envVariables": {},
+          "versionHistoryCount": 10,
+          "cpu": 1,
+          "memory": 2
         }
       ]
     }

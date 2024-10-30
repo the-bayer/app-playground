@@ -18,7 +18,7 @@
     "*": "prettier --write --ignore-unknown"
   },
   "engines": {
-    "node": "20.8.1"
+    "node": "20"
   },
   "dependencies": {
     "@heroicons/react": "2.1.3",

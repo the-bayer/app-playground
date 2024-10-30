@@ -11,7 +11,8 @@
         "trigger": "push"
       },
       "envVariables": {
-        "NIXPACKS_NODE_VERSION": "20"
+        "NIXPACKS_NODE_VERSION": "20",
+        "NIXPACKS_VERSION": "1.29.0"
       },
       "services": [
         {
@@ -46,7 +47,10 @@
           "installCommand": "pnpm install --no-frozen-lockfile",
           "buildCommand": "next build",
           "startCommand": "next start",
-          "envVariables": {},
+          "envVariables": {
+            "NIXPACKS_NODE_VERSION": "20",
+            "NIXPACKS_VERSION": "1.29.0"
+          },
           "versionHistoryCount": 10,
           "cpu": 1,
           "memory": 2

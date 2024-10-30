@@ -43,9 +43,7 @@
           "installCommand": "pnpm install --no-frozen-lockfile",
           "buildCommand": "next build",
           "startCommand": "next start",
-          "envVariables": {
-            "NIXPACKS_NODE_VERSION": "20"
-          },
+          "envVariables": {},
           "versionHistoryCount": 10,
           "cpu": 1,
           "memory": 2

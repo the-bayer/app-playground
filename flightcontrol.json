@@ -56,6 +56,42 @@
           "memory": 2
         }
       ]
+    },
+    {
+      "id": "production-env-2",
+      "name": "To delete",
+      "region": "us-east-1",
+      "source": {
+        "branch": "main",
+        "pr": false,
+        "trigger": "push"
+      },
+      "envVariables": {
+        "NIXPACKS_NODE_VERSION": "20",
+        "NIXPACKS_VERSION": "1.29.0"
+      },
+      "services": [
+        {
+          "ci": {
+            "type": "ec2",
+            "storageIops": 3000,
+            "storageType": "gp3",
+            "instanceStorage": 30,
+            "storageThroughput": 125
+          },
+          "id": "worker",
+          "name": "Worker",
+          "type": "worker",
+          "basePath": ".",
+          "buildType": "docker",
+          "dockerfilePath": "Dockerfile",
+          "dockerContext": ".",
+          "envVariables": {},
+          "versionHistoryCount": 10,
+          "cpu": 1,
+          "memory": 2
+        },
+      ]
     }
   ]
 }

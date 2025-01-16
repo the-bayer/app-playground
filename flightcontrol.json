@@ -58,27 +58,48 @@
       ]
     },
     {
-      "id": "preview",
+      "envVariables": {},
+      "id": "preview-BUShCm",
       "name": "Preview",
-      "region": "us-west-1",
+      "region": "ca-central-1",
+      "services": [
+        {
+          "autoscaling": {
+            "cooldownTimerSecs": 300,
+            "cpuThreshold": 70,
+            "memoryThreshold": 70
+          },
+          "basePath": ".",
+          "buildType": "nixpacks",
+          "ci": {
+            "instanceStorage": 30,
+            "storageIops": 3000,
+            "storageThroughput": 125,
+            "storageType": "gp3",
+            "type": "ec2"
+          },
+          "containerInsights": false,
+          "cpu": 1,
+          "envVariables": {},
+          "gpu": 0,
+          "id": "worker-1YTMgD-preview",
+          "includeEnvVariablesInBuild": true,
+          "maxInstances": 1,
+          "memory": 2,
+          "minInstances": 1,
+          "name": "Worker - preview",
+          "privileged": false,
+          "target": {
+            "type": "fargate"
+          },
+          "type": "worker",
+          "versionHistoryCount": 10
+        },
+      ],
       "source": {
         "pr": true,
         "trigger": "push"
-      },
-      "envVariables": {},
-      "services": [
-        {
-          "id": "preview-tower",
-          "name": "Tower Preview",
-          "type": "worker",
-          "buildType": "nixpacks",
-          "cpu": 2,
-          "memory": 4,
-          "ci": {
-            "type": "ec2"
-          }
-        }
-      ]
+      }
     }
   ]
 }
